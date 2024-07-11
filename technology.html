@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Website</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+        }
+
+        header {
+            background-color: #22395d;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            height: 20vh;
+            /* position: sticky;
+            top: 0;
+            z-index: 1000; */
+            
+        }
+
+        header h1 {
+            font-size: 2.5rem; 
+        }
+
+        .navbar {
+            background-color: #33498a;
+            padding: 1rem 0;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        .navbar ul li {
+            display: inline;
+            margin: 0 10px;
+            
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .navbar ul li a:hover {
+            background-color: #1a2854;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .featured {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .featured-item {
+            width: calc(35% - 40px);
+            /* Adjust width as needed */
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.5s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .featured-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .featured-text {
+            padding: 20px;
+            transition: background-color 0.5s ease;
+        }
+
+        .featured-item:hover .featured-text {
+            background-color: #f8f9fa;
+        }
+
+        .featured-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            transition: color 0.5s ease;
+        }
+
+        .featured-item:hover .featured-text h3 {
+            color: #007bff;
+        }
+
+        .featured-text p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            transition: color 0.5s ease;
+        }
+
+        .featured-item:hover .featured-text p {
+            color: #666;
+        }
+
+        .read-more {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .read-more:hover {
+            background-color: #0056b3;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .carousel-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .carousel-caption p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .news-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .news-item {
+            width: calc(33.33% - 20px);
+            /* Adjust width as needed */
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .news-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .news-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .more-news {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .more-news button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .more-news button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #373869;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-links ul,
+        .quick-links ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul li,
+        .quick-links ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        .footer-links ul li a,
+        .quick-links ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .footer-links ul li a:hover,
+        .quick-links ul li a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .technology-item {
+            background-color: #fff;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .technology-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .technology-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 123, 255, 0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .technology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .technology-item:hover .overlay {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">Welcome to Robotics World</h1>
+            <p style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Your source for robotics news, projects, and research.</p>
+        </div>
+    
+    </header>
+    <nav class="navbar" style="position: sticky; z-index: 1000; top: 0;">
+        <div class="container " >
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="educational.html">Education</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    
+    <section id="technology">
+        <div class="container">
+            <h2>Technology and Innovation</h2>
+            <div class="technology-grid">
+                <div class="technology-item">
+                    <a href="5G tech.html"><img src="techno-4.jfif" alt="Technology 4">
+                        <div class="overlay">
+                            <h3>5G Technology</h3>
+                            <p>The rollout of 5G networks promises faster data speeds, lower latency, and greater
+                                connectivity, enabling innovations in smart cities, IoT (Internet of Things), and
+                                immersive technologies like augmented reality (AR) and virtual reality (VR).</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="technology-item">
+                    <a href="energy.html"><img src="techno-5.jpg" alt="Technology 5">
+                        <div class="overlay">
+                            <h3>Renewable Energy and Sustainability</h3>
+                            <p>Innovations in renewable energy sources such as solar, wind, and hydroelectric power aim
+                                to reduce carbon emissions and achieve energy independence.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="technology-item">
+                    <a href="bigdata.html">
+                        <img src="techno5.jpg" alt="Technology 6">
+                        <div class="overlay">
+                            <h3>Big Data</h3>
+                            <p>Big Data continues to be a transformative force across industries, driven by the
+                                exponential growth in data volumes, variety, and velocity. Here's an overview of its
+                                current trends </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="quick-links">
+                <ul>
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="support.html">Support</a></li>
+                </ul>
+            </div>
+            <p>&copy; 2024 Robotics World. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
